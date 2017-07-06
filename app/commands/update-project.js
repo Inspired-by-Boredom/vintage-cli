@@ -26,7 +26,7 @@ let commandOptions;
 module.export = function (options) {
   const installedVintageCliVersion = require(`${process.env.cliRoot}/package.json`).version;
 
-  commandOptions = { ...options };
+  commandOptions = Object.assign({}, options);
 
   utils.spinner.start();
 
