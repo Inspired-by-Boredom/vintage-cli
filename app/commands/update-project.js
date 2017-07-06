@@ -22,6 +22,8 @@ let commandOptions;
 
 /**
  * Generate back-up or current files and update them (if newer version is available).
+ *
+ * @TODO: backups with uniq id
  */
 module.exports = function (options) {
   const installedVintageCliVersion = require(`${process.env.cliRoot}/package.json`).version;
