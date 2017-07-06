@@ -20,7 +20,7 @@
 const program     = require('commander');
 const fs          = require('fs');
 const path        = require('path');
-const utils       = require('./modules/utils');
+const utils       = require('../app/modules/utils');
 const chalk       = require('chalk');
 const args        = process.argv.slice(2);
 const cliRootPath = path.resolve(__dirname, '../');
@@ -42,21 +42,21 @@ program
 program
   .command('init')
   .description('Run vintage-frontend generator ("yo" and "generator-vintage-frontend" must be installed globally)')
-  .action(() => require('./commands/init')());
+  .action(() => require('./../app/commands/init')());
 
 program
   .command('update-project')
   .description('Update vintage-frontend in current project')
   .option('-f, --force', 'Force update, even you have the latest version')
   .action(options => {
-    if (utils.isVintageFrontendReadyToWork()) require('./commands/update-project')(options);
+    if (utils.isVintageFrontendReadyToWork()) require('./../app/commands/update-project')(options);
   });
 
 program
   .option('-v, --version', 'Version of vintage-cli and vintage-frontend');
 
 if (program.version && args.length && (args[0] === '--version' || args[0] === '-v')) {
-  require('./commands/version')();
+  require('./../app/commands/version')();
 }
 
 if (!args.length || args[0] == '-h' || args[0] == '--help') {
