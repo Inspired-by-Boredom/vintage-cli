@@ -14,9 +14,7 @@ const currentVintageFrontendVersion = utils.getVintageFrontendProjectVersion();
 const backupFolderName = `${path.parse(cwd).name}-backup-${new Date()}`;
 
 let urls = {
-  gulp: '',
-  webpackConfig: '',
-  package: ''
+  vintageCli: 'https://github.com/vintage-web-production/generator-vintage-frontend/archive/master.zip'
 };
 let commandOptions;
 
@@ -116,5 +114,10 @@ function startUpdateProcess() {
         }, 5000);
       });
     })
-    .then(makeBackup);
+    .then(makeBackup)
+    .then(() => {
+      download(urls.vintageCli, data => {
+        console.log(data);
+      });
+    })
 }
