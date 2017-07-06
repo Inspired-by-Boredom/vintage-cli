@@ -38,7 +38,7 @@ Execute command: `vintage-cli <command> <flags>`
 
 ## Version ##
 
-Current version is 0.2.13
+Current version is 0.2.14
 
 ## Credits ##
 

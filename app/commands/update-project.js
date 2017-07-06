@@ -90,13 +90,11 @@ function makeBackup() {
     fsExtra.copy(cwd, `${cwd}/${backupFolderName}`,
       {
         filter: source => {
-          const resultIndexOf = source.indexOf(`${path.parse(cwd).name}-backup`);
+          const notNodeModule = !source.includes('node_modules');
+          const notBackupFolder = !source.includes(`${path.parse(cwd).name}-backup`);
+          const notGit = !source.includes('.git');
 
-          if (resultIndexOf > -1) {
-            return false;
-          }
-
-          return true;
+          return notNodeModule && notBackupFolder && notGit;
         }
       },
       error => {
