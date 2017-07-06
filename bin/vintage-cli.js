@@ -6,7 +6,7 @@
  * Vintage command-line interface for vintage-frontend workflow.
  *
  * @author Vitali Shapovalov
- * @version 0.2.17
+ * @version 0.2.18
  *
  * vintage-cli -v / --version    get current vintage-cli / vintage-frontend workflow in current project
  * vintage-cli -h / --help       list available commands
