@@ -31,13 +31,13 @@ Execute command: `vintage-cli <command> <flags>`
 
 ## Version ##
 
-Current version is 0.1.13
+Current version is 0.1.14
 
 ## Credits ##
 
-Inspired by [TARS-cli](https://github.com/tars/tars-cli).
+Inspired by [TARS-CLI](https://github.com/tars/tars-cli).
 
-TARS-cli author: [Artem Malko](https://github.com/artem-malko).
+TARS-CLI author: [Artem Malko](https://github.com/artem-malko).
 
 ## License ##
 

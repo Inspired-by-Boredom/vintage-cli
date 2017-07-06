@@ -1,9 +1,9 @@
 {
   "name": "vintage-cli",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Vintage workflow command line interface",
   "author": "Vitali Shapovalov <shapovalov.vitali.v@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "commander": "^2.10.0"
   },
