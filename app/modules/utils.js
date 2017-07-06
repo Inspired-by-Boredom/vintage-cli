@@ -41,7 +41,7 @@ module.exports = {
     const cwd = process.cwd();
 
     try {
-      require(`${cwd}/gulp/config`);
+      require(`${cwd}/vintage-frontend.json`);
     } catch (error) {
       if (error.code !== 'MODULE_NOT_FOUND') {
         this.say(chalk.red('There are some problems with your vintage-frontend project!\n'), true);
@@ -115,8 +115,8 @@ module.exports = {
    */
   vintageFrontendNotInitedActions() {
     console.log('\n');
-    this.say(chalk.red('vintage-frontend is not inited.'));
-    this.say(`Use ${chalk.inverse.black('"vintage-cli init"')} to init vintage-frontend in current directory.\n`, true);
+    this.say(chalk.red('vintage-frontend is not inited'));
+    this.say(`Use ${chalk.inverse.black('"vintage-cli init"')} to create new vintage-frontend project \n`, true);
   },
 
   /**
