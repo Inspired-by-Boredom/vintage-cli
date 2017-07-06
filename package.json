@@ -1,6 +1,6 @@
 {
   "name": "vintage-cli",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "description": "Vintage workflow command line interface",
   "author": "Vitali Shapovalov <shapovalov.vitali.v@gmail.com>",
   "license": "MIT",
