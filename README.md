@@ -23,7 +23,7 @@ Also, you can run `vintage-cli -h` or `vintage-cli --help` to get information ab
 
 Execute command: `vintage-cli <command> <flags>`
 
-### Available commands ###
+#### Available commands ####
 
 `init` — run yeoman vintage-frontend generator to initialize new project.
 
@@ -31,11 +31,12 @@ Execute command: `vintage-cli <command> <flags>`
 
 ## Version ##
 
-Current version is 0.1.11
+Current version is 0.1.12
 
 ## Credits ##
 
 Inspired by [TARS-cli](https://github.com/tars/tars-cli).
+
 TARS-cli author: [Artem Malko](https://github.com/artem-malko).
 
 ## License ##

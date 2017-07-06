@@ -1,12 +1,15 @@
 {
   "name": "vintage-cli",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Vintage workflow command line interface",
   "main": "app/vintage-cli.js",
   "author": "Vitali Shapovalov <shapovalov.vitali.v@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "commander": "^2.10.0"
+  },
+  "bin": {
+    "vintage-cli": "./app/vintage-cli.js"
   },
   "dependencies": {
     "chalk": "^2.0.1",
