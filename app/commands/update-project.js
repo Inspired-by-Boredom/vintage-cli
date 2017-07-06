@@ -1,6 +1,6 @@
 'use strict';
 
-const Download = require('download');
+const download = require('download');
 const fsExtra  = require('fs-extra');
 const del      = require('del');
 const fs       = require('fs');
@@ -32,17 +32,10 @@ module.export = function (options) {
 
   utils.say('Checking, if update is available for you...');
 
-  new Download({ extract: true, mode: '755' })
-    .get('https://raw.githubusercontent.com/vintage-web-production/vintage-cli/master/package.json')
-    .run((error, files) => {
+  download('https://raw.githubusercontent.com/vintage-web-production/vintage-cli/master/package.json')
+    .then(data => {
 
-      if (error) {
-        utils.say(chalk.red.bold('\n Error while fetching vintage-cli repository url \n'), true);
-
-        throw new Error(error);
-      }
-
-      const latestVintageCliVersion = JSON.parse(files[0].contents.toString()).version;
+      const latestVintageCliVersion = JSON.parse(data.toString()).version;
 
       if (installedVintageCliVersion < latestVintageCliVersion) {
         utils.say('Version of installed vintage-cli is not the latest!');
@@ -52,17 +45,10 @@ module.export = function (options) {
         return false;
       }
 
-      new Download({ extract: true, mode: '755' })
-        .get('https://raw.githubusercontent.com/vintage-web-production/generator-vintage-frontend/master/package.json')
-        .run((error, files) => {
+      download('https://raw.githubusercontent.com/vintage-web-production/generator-vintage-frontend/master/package.json')
+        .then(data => {
 
-          if (error) {
-            utils.say(chalk.red('Something is gone wrong...'));
-            utils.say('Files in your project have not been changed');
-            console.error(error);
-          }
-
-          const downloadedVersion = JSON.parse(files[0].contents.toString()).version;
+          const downloadedVersion = JSON.parse(data.toString()).version;
 
           if (currentVintageFrontendVersion === downloadedVersion && !commandOptions.force) {
             return utils.say('You have the latest version of vintage-frontend already!', true);
@@ -75,7 +61,17 @@ module.export = function (options) {
           }
 
           startUpdateProcess();
+        })
+        .catch(e => {
+          utils.say(chalk.red('Something is gone wrong...'));
+          utils.say('Files in your project have not been changed');
+          console.error(e);
         });
+    })
+    .catch(e => {
+      utils.say(chalk.red.bold('\n Error while fetching vintage-cli repository url \n'), true);
+
+      throw new Error(e);
     });
 };
 

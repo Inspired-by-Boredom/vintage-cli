@@ -2,7 +2,7 @@
 
 const chalk     = require('chalk');
 const utils     = require('../modules/utils');
-const Download  = require('download');
+const download  = require('download');
 
 /**
  * Get vintage-cli version
@@ -14,15 +14,11 @@ module.exports = function getVersion() {
 
   Promise
     .resolve()
-    .then(() => new Promise(resolve => {
-      new Download({ extract: true, mode: '755' })
-        .get('https://raw.githubusercontent.com/vintage-web-production/vintage-cli/master/package.json')
-        .run((error, files) => {
-          if (error) {
-            return resolve(console.log(chalk.red.bold('\n Error while fetching vintage-cli repository url \n')));
-          }
+    .then(() => new Promise((resolve, reject) => {
 
-          const latestVintageCliVersion = JSON.parse(files[0].contents.toString()).version;
+      download('https://raw.githubusercontent.com/vintage-web-production/vintage-cli/master/package.json')
+        .then(data => {
+          const latestVintageCliVersion = JSON.parse(data.toString()).version;
 
           if (vintageCliVersion < latestVintageCliVersion) {
             utils.say(
@@ -35,6 +31,9 @@ module.exports = function getVersion() {
             );
           }
           return resolve();
+        })
+        .catch(e => {
+          reject(console.log(chalk.red.bold(`\n Error while fetching vintage-cli repository url: ${e} \n`)));
         });
     }))
     .then(() => {
@@ -47,14 +46,13 @@ module.exports = function getVersion() {
         installedVintageFrontendVersion = undefined;
       }
 
-      new Download({ extract: true, mode: '755' })
-        .get('https://raw.githubusercontent.com/Vintage-web-production/generator-vintage-frontend/master/package.json')
-        .run((error, files) => {
-          if (error || !installedVintageFrontendVersion) {
-            console.log(chalk.red.bold('\n Error while fetching generator-vintage-frontend repository url \n'))
+      download('https://raw.githubusercontent.com/Vintage-web-production/generator-vintage-frontend/master/package.json')
+        .then(data => {
+          if (!installedVintageFrontendVersion) {
+            console.log(chalk.red.bold('No installed vintage front-end found'))
           }
 
-          const latestVintageFrontendVersion = JSON.parse(files[0].contents.toString()).version;
+          const latestVintageFrontendVersion = JSON.parse(data.toString()).version;
 
           if (installedVintageFrontendVersion < latestVintageFrontendVersion) {
             utils.say(
@@ -66,6 +64,9 @@ module.exports = function getVersion() {
               true
             );
           }
+        })
+        .catch(e => {
+          console.log(chalk.red.bold(`\n Error while fetching generator-vintage-frontend repository url: ${e} \n`));
         });
     })
     .catch(error => {
