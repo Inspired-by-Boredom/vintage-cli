@@ -13,6 +13,8 @@ or
 
 `yarn add vintage-cli global`
 
+> prepend with `sudo` if you are running on `*nix` OS.
+
 ## Usage ##
 
 Run `vintage-cli -v` or `vintage-cli --version` to display current version of vintage-cli and vintage-frontend.
@@ -27,11 +29,16 @@ Execute command: `vintage-cli <command> <flags>`
 
 `init` — run yeoman vintage-frontend generator to initialize new project.
 
-`update-project` — updates gulp tasks, webpack config and package.json in current project (if update is available).
+`update` — update vintage-cli
+
+`update-project` — update gulp tasks, webpack config and package.json in current project (if updates are available).
+
+`run <taskName>` — start task (development or production)
+
 
 ## Version ##
 
-Current version is 0.1.22
+Current version is 0.2.1
 
 ## Credits ##
 

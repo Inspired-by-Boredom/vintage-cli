@@ -1,11 +1,20 @@
 {
   "name": "vintage-cli",
-  "version": "0.1.22",
+  "version": "0.2.1",
   "description": "Vintage workflow command line interface",
   "author": "Vitali Shapovalov <shapovalov.vitali.v@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "commander": "^2.10.0"
+  "keywords": [
+    "vintage",
+    "vintage-cli",
+    "cli",
+    "gulp",
+    "front-end",
+    "markup"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Vintage-web-production/vintage-cli.git"
   },
   "bin": {
     "vintage-cli": "./bin/vintage-cli.js"
@@ -13,10 +22,13 @@
   "preferGlobal": true,
   "dependencies": {
     "chalk": "^2.0.1",
+    "commander": "^2.10.0",
     "cli-spinner": "^0.2.6",
     "del": "^3.0.0",
     "download": "^6.2.5",
     "fs-extra": "^3.0.1",
+    "unzip": "^0.1.11",
+    "win-spawn": "^2.0.0",
     "yeoman-environment": "^2.0.0"
   }
 }

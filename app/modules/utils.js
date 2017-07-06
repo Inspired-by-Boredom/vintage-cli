@@ -4,6 +4,7 @@ const chalk   = require('chalk');
 const os      = require('os');
 const fsExtra = require('fs-extra');
 const Spinner = require('cli-spinner').Spinner;
+const spawn   = require('win-spawn');
 
 const spinner = new Spinner('%s');
 
@@ -65,24 +66,10 @@ module.exports = {
   },
 
   /**
-   * Gets vintage-frontend config from current directory.
+   * Get current vintage-frontend workflow version.
    *
-   * @return {boolean | object} vintage-frontend config
+   * @return {*}
    */
-  getVintageFrontendConfig() {
-    const cwd = process.cwd();
-    const initedStatus = this.isVintageFrontendInited();
-
-    if (initedStatus.inited && !initedStatus.error) {
-      return require(`${cwd}/gulp/config`);
-    }
-
-    if (!initedStatus.error) {
-      this.vintageFrontendNotInitedActions();
-    }
-    return false;
-  },
-
   getVintageFrontendProjectVersion() {
     const cwd = process.cwd();
 
@@ -95,20 +82,6 @@ module.exports = {
   },
 
   /**
-   * Output messages
-   *
-   * @param  {String}  message Message to output
-   * @param  {Boolean} [stopSpinner] or restart it
-   */
-  say(message, stopSpinner) {
-
-    // Restart spinner after every message from TARS
-    stopSpinner ? this.spinner.stop(true) : this.spinner.restart();
-
-    console.log(chalk.inverse.black('[vintage]: ') + chalk.bold.white(message));
-  },
-
-  /**
    * Run when vintage-frontend is not initialized
    *
    * @return {[type]} [description]
@@ -117,39 +90,6 @@ module.exports = {
     console.log('\n');
     this.say(chalk.red('vintage-frontend is not inited'));
     this.say(`Use ${chalk.inverse.black('"vintage-cli init"')} to create new vintage-frontend project \n`, true);
-  },
-
-  /**
-   * Validate folder name
-   *
-   * @param  {String} value received folder name
-   * @return {Boolean || String} True or error text (not consistent, because of inquirer va)
-   */
-  validateFolderName(value) {
-    const pass = /[?<>:*|"\\]/.test(value);
-
-    if (!pass) {
-      return true;
-    }
-
-    return 'Symbols \'?<>:*|"\\\' are not allowed. Please, enter a valid folder name!';
-  },
-
-  /**
-   * Extract only used flags from inquirer options
-   *
-   * @param  {Object} inquirerOptions Inquirer options
-   * @return {Array}
-   */
-  getUsedFlags(inquirerOptions) {
-    return Object.keys(inquirerOptions).reduce((result, currentValue) => {
-      if (currentValue.indexOf('_') !== 0 && currentValue !== 'options' &&
-        currentValue !== 'commands' && currentValue !== 'parent') {
-        result.push(currentValue);
-      }
-
-      return result;
-    }, []);
   },
 
   /**
@@ -171,12 +111,40 @@ module.exports = {
     return true;
   },
 
-  spinner,
+  /**
+   * Run command in different env
+   *
+   * @param  {String} commandName     Name of the command
+   * @param  {Array}  commandOptions  Options for task
+   */
+  runCommand(commandName, commandOptions) {
+    spinner.stop(true);
+    spawn(commandName, commandOptions, { stdio: 'inherit' });
+  },
+
+  /**
+   * Output messages
+   *
+   * @param  {String}  message Message to output
+   * @param  {Boolean} [stopSpinner] or restart it
+   */
+  say(message, stopSpinner) {
+
+    // Restart spinner after every message from TARS
+    stopSpinner ? this.spinner.stop(true) : this.spinner.restart();
+
+    console.log(chalk.inverse.black('[Vintage]: ') + chalk.bold.white(message));
+  },
 
   /**
    * Determines is current platform windows.
    *
    * @return {boolean}
    */
-  isWindows
+  isWindows,
+
+  /**
+   * Command line spinner
+   */
+  spinner
 };

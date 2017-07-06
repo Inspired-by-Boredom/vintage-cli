@@ -13,7 +13,7 @@
  *
  * @TODO: Tests coverage
  * @TODO: update for different builds (code-splitting, without jQuery)
- * @TODO: run / production commands
+ * @TODO: move vintage-cli-templates (generator-vintage-frontend) to another place
  * @TODO: code refactor
  */
 
@@ -45,11 +45,25 @@ program
   .action(() => require('./../app/commands/init')());
 
 program
+  .command('update')
+  .description('Update vintage-cli')
+  .action(() => require('../app/commands/update')());
+
+program
   .command('update-project')
   .description('Update vintage-frontend in current project')
   .option('-f, --force', 'Force update, even you have the latest version')
   .action(options => {
     if (utils.isVintageFrontendReadyToWork()) require('./../app/commands/update-project')(options);
+  });
+
+program
+  .command('run <taskName>')
+  .description('Start task (development or production)')
+  .action(taskName => {
+    if (utils.isVintageFrontendReadyToWork()) {
+      require('../app/commands/tasks')(taskName);
+    }
   });
 
 program

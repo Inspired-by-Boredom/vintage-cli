@@ -26,7 +26,7 @@ module.exports = function getVersion() {
               true
             );
             utils.say(
-              `Run the command "${chalk.inverse.black('npm i -g vintage-cli')}" to update vintage-cli. \n`,
+              `Run the command "${chalk.inverse.black('vintage-cli update')}" to update vintage-cli. \n`,
               true
             );
           }
