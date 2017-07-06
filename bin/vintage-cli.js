@@ -6,13 +6,13 @@
  * Vintage command-line interface for vintage-frontend workflow.
  *
  * @author Vitali Shapovalov
- * @version 0.2.14
+ * @version 0.2.15
  *
  * vintage-cli -v / --version    get current vintage-cli / vintage-frontend workflow in current project
  * vintage-cli -h / --help       list available commands
  *
  * vintage-cli init              run yeoman vintage-frontend generator
- * vintage-cli update            update vintage-cli and generator-vintage-frontend
+ * vintage-cli update            update vintage-cli
  * vintage-cli update-project    check for available updates and update project in current repository
  * vintage-cli run <taskName>    start task (development or production)
  *
@@ -51,7 +51,7 @@ program
 
 program
   .command('update')
-  .description('Update vintage-cli and generator-vintage-frontend')
+  .description('Update vintage-cli')
   .action(() => require('../app/commands/update')());
 
 program
