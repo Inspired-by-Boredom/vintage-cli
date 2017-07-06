@@ -11,7 +11,7 @@ const utils = require('../modules/utils');
 const cwd   = process.cwd();
 
 const currentVintageFrontendVersion = utils.getVintageFrontendProjectVersion();
-const backupFolderName = `${path.parse(cwd).name}-backup-${new Date()}`;
+const backupFolderName = `${path.parse(cwd).name}-backup-${new Date().getTime()}`;
 
 let urls = {
   vintageCli: 'https://github.com/vintage-web-production/generator-vintage-frontend/archive/master.zip'
