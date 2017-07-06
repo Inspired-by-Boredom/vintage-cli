@@ -29,7 +29,7 @@ Execute command: `vintage-cli <command> <flags>`
 
 `init` — run yeoman vintage-frontend generator to initialize new project.
 
-`update` — update vintage-cli
+`update` — update vintage-cli and generator-vintage-frontend
 
 `update-project` — update gulp tasks, webpack config and package.json in current project (if updates are available).
 
@@ -38,7 +38,7 @@ Execute command: `vintage-cli <command> <flags>`
 
 ## Version ##
 
-Current version is 0.2.1
+Current version is 0.2.12
 
 ## Credits ##
 

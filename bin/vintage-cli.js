@@ -9,7 +9,9 @@
  * vintage-cli -h / --help       list available commands
  *
  * vintage-cli init              run yeoman vintage-frontend generator
+ * vintage-cli update            update vintage-cli and generator-vintage-frontend
  * vintage-cli update-project    check for available updates and update project in current repository
+ * vintage-cli run <taskName>    start task (development or production)
  *
  * @TODO: Tests coverage
  * @TODO: update for different builds (code-splitting, without jQuery)
@@ -46,7 +48,7 @@ program
 
 program
   .command('update')
-  .description('Update vintage-cli')
+  .description('Update vintage-cli and generator-vintage-frontend')
   .action(() => require('../app/commands/update')());
 
 program
@@ -60,10 +62,8 @@ program
 program
   .command('run <taskName>')
   .description('Start task (development or production)')
-  .action(taskName => {
-    if (utils.isVintageFrontendReadyToWork()) {
-      require('../app/commands/tasks')(taskName);
-    }
+  .action(options => {
+    if (utils.isVintageFrontendReadyToWork()) require('../app/commands/tasks')(options);
   });
 
 program
