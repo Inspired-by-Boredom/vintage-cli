@@ -23,7 +23,7 @@ let commandOptions;
 /**
  * Generate back-up or current files and update them (if newer version is available).
  */
-module.export = function (options) {
+module.exports = function (options) {
   const installedVintageCliVersion = require(`${process.env.cliRoot}/package.json`).version;
 
   commandOptions = Object.assign({}, options);
