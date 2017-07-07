@@ -41,7 +41,7 @@ module.exports = function (options) {
 
       if (installedVintageCliVersion < latestVintageCliVersion) {
         utils.say('Version of installed vintage-cli is not the latest!');
-        utils.say(`Please, update vintage-cli first!: "npm i -g vintage-cli"`);
+        utils.say(`Please, update vintage-cli first!: ${chalk.inverse.black('vintage update')}`);
         utils.say(`The latest version is: ${chalk.inverse.black.bold(latestVintageCliVersion)}`);
         utils.say(`Installed version is: ${chalk.inverse.black.bold(installedVintageCliVersion)}`, true);
         return false;

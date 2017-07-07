@@ -17,13 +17,13 @@ or
 
 ## Usage ##
 
-Run `vintage-cli -v` or `vintage-cli --version` to display current version of vintage-cli and vintage-frontend.
+Run `vintage -v` or `vintage --version` to display current version of vintage-cli and vintage-frontend.
 
-Also, you can run `vintage-cli -h` or `vintage-cli --help` to get information about available commands and flags.
+Also, you can run `vintage -h` or `vintage --help` to get information about available commands and flags.
 
 ## Commands ##
 
-Execute command: `vintage-cli <command> <flags>`
+Execute command: `vintage <command> <flags>`
 
 #### Available commands ####
 
@@ -38,7 +38,7 @@ Execute command: `vintage-cli <command> <flags>`
 
 ## Version ##
 
-Current version is 0.2.18
+Current version is 0.2.19
 
 ## Credits ##
 

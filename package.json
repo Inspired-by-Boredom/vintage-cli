@@ -1,6 +1,6 @@
 {
   "name": "vintage-cli",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "description": "Vintage workflow command line interface",
   "author": "Vitali Shapovalov <shapovalov.vitali.v@gmail.com>",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "url": "git://github.com/Vintage-web-production/vintage-cli.git"
   },
   "bin": {
-    "vintage-cli": "./bin/vintage-cli.js"
+    "vintage": "./bin/vintage.js"
   },
   "preferGlobal": true,
   "dependencies": {

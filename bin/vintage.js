@@ -6,15 +6,15 @@
  * Vintage command-line interface for vintage-frontend workflow.
  *
  * @author Vitali Shapovalov
- * @version 0.2.18
+ * @version 0.2.19
  *
- * vintage-cli -v / --version    get current vintage-cli / vintage-frontend workflow in current project
- * vintage-cli -h / --help       list available commands
+ * vintage -v / --version    get current vintage-cli / vintage-frontend workflow in current project
+ * vintage -h / --help       list available commands
  *
- * vintage-cli init              run yeoman vintage-frontend generator
- * vintage-cli update            update vintage-cli
- * vintage-cli update-project    check for available updates and update project in current repository
- * vintage-cli run <taskName>    start task (development or production)
+ * vintage init              run yeoman vintage-frontend generator
+ * vintage update            update vintage-cli
+ * vintage update-project    check for available updates and update project in current repository
+ * vintage run <taskName>    start task (development or production)
  *
  * @TODO: Tests coverage
  * @TODO: update for different builds (code-splitting, without jQuery)

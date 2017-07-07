@@ -26,7 +26,7 @@ module.exports = function getVersion() {
               true
             );
             utils.say(
-              `Run the command "${chalk.inverse.black('vintage-cli update')}" to update vintage-cli. \n`,
+              `Run the command "${chalk.inverse.black('vintage update')}" to update vintage-cli. \n`,
               true
             );
           }
@@ -60,7 +60,7 @@ module.exports = function getVersion() {
               true
             );
             utils.say(
-              `Run the command "${chalk.inverse.black('vintage-cli update-project')}" to update vintage-frontend in current project. \n`,
+              `Run the command "${chalk.inverse.black('vintage update-project')}" to update vintage-frontend in current project. \n`,
               true
             );
           }
