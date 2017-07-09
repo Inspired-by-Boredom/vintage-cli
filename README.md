@@ -40,7 +40,7 @@ Available flags:
 
 ## Version ##
 
-Current version is 0.2.2
+Current version is 0.2.21
 
 ## Credits ##
 
