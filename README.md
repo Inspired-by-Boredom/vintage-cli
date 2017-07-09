@@ -29,16 +29,18 @@ Execute command: `vintage <command> <flags>`
 
 `init` — run yeoman vintage-frontend generator to initialize new project.
 
-`update` — update vintage-cli
+`update` — update vintage-cli.
 
 `update-project` — update gulp tasks, webpack config and package.json in current project (if updates are available).
+Available flags:
+*-f, --force* — force update, even you have the latest version
 
 `run <taskName>` — start task (development or production)
 
 
 ## Version ##
 
-Current version is 0.2.19
+Current version is 0.2.2
 
 ## Credits ##
 
