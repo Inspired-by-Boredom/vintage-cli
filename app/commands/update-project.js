@@ -2,7 +2,6 @@
 
 const download = require('download');
 const fsExtra  = require('fs-extra');
-const del      = require('del');
 const fs       = require('fs');
 const chalk    = require('chalk');
 const path     = require('path');
@@ -140,7 +139,9 @@ function downloadAndExtractFiles() {
  */
 function copyNewFiles() {
   return new Promise(resolve => {
-    const pathToTemplates = 'temp/generator-vintage-frontend-master/generators/app/vintage-cli-templates';
+    const rootPath = 'temp/generator-vintage-frontend-master/generators/app';
+    const pathToTemplates = `${rootPath}/templates`;
+    const pathToVCLITemplates = `${rootPath}/vintage-cli-templates`;
 
     // copy new files
     fsExtra
@@ -150,7 +151,7 @@ function copyNewFiles() {
 
       // webpack.config.js
       .then(() =>
-        fsExtra.copy(`${cwd}/${pathToTemplates}/webpack.config.js`, `${cwd}/webpack.config.js`)
+        fsExtra.copy(`${cwd}/${pathToVCLITemplates}/webpack.config.js`, `${cwd}/webpack.config.js`)
       )
 
       // vintage-frontend.json
@@ -160,7 +161,7 @@ function copyNewFiles() {
 
       // package.json new devDependencies, scripts and version
       .then(() => {
-        const newPackage = fsExtra.readJsonSync(`${cwd}/${pathToTemplates}/package.json`);
+        const newPackage = fsExtra.readJsonSync(`${cwd}/${pathToVCLITemplates}/package.json`);
         const oldPackage = fsExtra.readJsonSync(`${cwd}/package.json`);
 
         oldPackage.version = newPackage.version;

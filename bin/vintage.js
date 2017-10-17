@@ -6,7 +6,7 @@
  * Vintage command-line interface for vintage-frontend workflow.
  *
  * @author Vitali Shapovalov
- * @version 0.2.21
+ * @version 0.2.3
  *
  * vintage -v / --version    get current vintage-cli / vintage-frontend workflow in current project
  * vintage -h / --help       list available commands
@@ -17,16 +17,16 @@
  * vintage run <taskName>    start task (development or production)
  *
  * @TODO: Tests coverage
- * @TODO: update for different builds (code-splitting, without jQuery)
- * @TODO: move vintage-cli-templates (generator-vintage-frontend) to another place
+ * @TODO: update for different builds (without jQuery), vintage-frontend VERSION
+ * @TODO: merge vintage-cli-templates
  * @TODO: code refactor
+ * @TODO: Flow support (in separate build)
  */
 
 const program     = require('commander');
 const fs          = require('fs');
 const path        = require('path');
 const utils       = require('../app/modules/utils');
-const chalk       = require('chalk');
 const args        = process.argv.slice(2);
 const cliRootPath = path.resolve(__dirname, '../');
 let npmRootPath   = path.join(cliRootPath, 'node_modules/');
