@@ -16,7 +16,7 @@ module.exports = function getVersion() {
     .resolve()
     .then(() => new Promise((resolve, reject) => {
 
-      download('https://raw.githubusercontent.com/vintage-web-production/vintage-cli/master/package.json')
+      download('https://raw.githubusercontent.com/Inspired-by-Boredom/vintage-cli/master/package.json')
         .then(data => {
           const latestVintageCliVersion = JSON.parse(data.toString()).version;
 
@@ -46,7 +46,7 @@ module.exports = function getVersion() {
         installedVintageFrontendVersion = undefined;
       }
 
-      download('https://raw.githubusercontent.com/Vintage-web-production/generator-vintage-frontend/master/package.json')
+      download('https://raw.githubusercontent.com/Inspired-by-Boredom/generator-vintage-frontend/master/package.json')
         .then(data => {
           if (!installedVintageFrontendVersion) {
             console.log(chalk.red.bold('No installed vintage front-end found'))

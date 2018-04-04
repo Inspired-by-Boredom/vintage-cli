@@ -15,7 +15,7 @@ const backupFolderName = `${path.parse(cwd).name}-backup`;
 
 
 let urls = {
-  vintageCli: 'https://github.com/vintage-web-production/generator-vintage-frontend/archive/master.zip'
+  vintageCli: 'https://github.com/Inspired-by-Boredom/generator-vintage-frontend/archive/master.zip'
 };
 let commandOptions;
 
@@ -33,7 +33,7 @@ module.exports = function (options) {
 
   utils.say('Checking, if update is available for you...');
 
-  download('https://raw.githubusercontent.com/vintage-web-production/vintage-cli/master/package.json')
+  download('https://raw.githubusercontent.com/Inspired-by-Boredom/vintage-cli/master/package.json')
     .then(data => {
 
       const latestVintageCliVersion = JSON.parse(data.toString()).version;
@@ -46,7 +46,7 @@ module.exports = function (options) {
         return false;
       }
 
-      download('https://raw.githubusercontent.com/vintage-web-production/generator-vintage-frontend/master/package.json')
+      download('https://raw.githubusercontent.com/Inspired-by-Boredom/generator-vintage-frontend/master/package.json')
         .then(data => {
 
           const downloadedVersion = JSON.parse(data.toString()).version;

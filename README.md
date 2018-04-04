@@ -3,7 +3,7 @@
 [![NPM version][npm-image]][npm-url]
 ![][license-url]
 
-Command Line Interface for [vintage-frontend](https://github.com/Vintage-web-production/generator-vintage-frontend) markup.
+Command Line Interface for [vintage-frontend](https://github.com/Inspired-by-Boredom/generator-vintage-frontend) markup.
 
 ## Install and update ##
 
@@ -40,7 +40,7 @@ Available flags:
 
 ## Version ##
 
-Current version is 0.2.3
+Current version is 0.2.4
 
 ## Credits ##
 
@@ -50,7 +50,7 @@ TARS-CLI author: [Artem Malko](https://github.com/artem-malko).
 
 ## License ##
 
-[MIT License](https://github.com/Vintage-web-production/vintage-cli/blob/master/LICENSE)
+[MIT License](https://github.com/Inspired-by-Boredom/vintage-cli/blob/master/LICENSE)
 
 [npm-url]: https://www.npmjs.com/package/vintage-cli
 [npm-image]: https://badge.fury.io/js/vintage-cli.svg

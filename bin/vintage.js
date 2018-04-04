@@ -6,7 +6,7 @@
  * Vintage command-line interface for vintage-frontend workflow.
  *
  * @author Vitali Shapovalov
- * @version 0.2.3
+ * @version 0.2.4
  *
  * vintage -v / --version    get current vintage-cli / vintage-frontend workflow in current project
  * vintage -h / --help       list available commands
@@ -17,10 +17,10 @@
  * vintage run <taskName>    start task (development or production)
  *
  * @TODO: Tests coverage
- * @TODO: update for different builds (without jQuery), vintage-frontend VERSION
+ * @TODO: vintage-frontend VERSION
  * @TODO: merge vintage-cli-templates
- * @TODO: code refactor
- * @TODO: Flow support (in separate build)
+ * @TODO: Typescript support
+ * @TODO: prettier support
  */
 
 const program     = require('commander');
