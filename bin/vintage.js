@@ -6,7 +6,7 @@
  * Vintage command-line interface for vintage-frontend workflow.
  *
  * @author Vitali Shapovalov
- * @version 0.2.4
+ * @version 0.3.0
  *
  * vintage -v / --version    get current vintage-cli / vintage-frontend workflow in current project
  * vintage -h / --help       list available commands
@@ -19,7 +19,6 @@
  * @TODO: Tests coverage
  * @TODO: vintage-frontend VERSION
  * @TODO: merge vintage-cli-templates
- * @TODO: Typescript support
  * @TODO: prettier support
  */
 

@@ -3,7 +3,7 @@
 [![NPM version][npm-image]][npm-url]
 ![][license-url]
 
-Command Line Interface for [vintage-frontend](https://github.com/Inspired-by-Boredom/generator-vintage-frontend) markup.
+Command Line Interface for [vintage-frontend](https://github.com/Inspired-by-Boredom/generator-vintage-frontend) generator
 
 ## Install and update ##
 
@@ -40,7 +40,7 @@ Available flags:
 
 ## Version ##
 
-Current version is 0.2.4
+Current version is 0.3.0
 
 ## Credits ##
 
