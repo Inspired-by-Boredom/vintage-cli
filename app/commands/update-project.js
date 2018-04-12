@@ -92,8 +92,9 @@ function makeBackup() {
           const notNodeModule = !source.includes('node_modules');
           const notBackupFolder = !source.includes(`${path.parse(cwd).name}-backup`);
           const notGit = !source.includes('.git');
+          const notIdea = !source.includes('.idea');
 
-          return notNodeModule && notBackupFolder && notGit;
+          return notNodeModule && notBackupFolder && notGit && notIdea;
         }
       },
       error => {
@@ -104,6 +105,7 @@ function makeBackup() {
         utils.say(
           `Backup has been created. Folder name is: "${chalk.inverse.black(backupFolderName)}"`
         );
+
         resolve();
       }
     );
@@ -118,9 +120,9 @@ function makeBackup() {
 function downloadAndExtractFiles() {
   return new Promise(resolve => {
     try {
-      fs.mkdirSync(`${cwd}/temp`)
+      fs.mkdirSync(`${cwd}/temp`);
     } catch (err) {
-      if (err.code !== 'EEXIST') throw err
+      if (err.code !== 'EEXIST') throw err;
     }
 
     download(urls.vintageCli, `${cwd}/temp`)
@@ -142,6 +144,7 @@ function copyNewFiles() {
     const rootPath = 'temp/generator-vintage-frontend-master/generators/app';
     const pathToTemplates = `${rootPath}/templates`;
     const pathToVCLITemplates = `${rootPath}/vintage-cli-templates`;
+    const settings = JSON.parse(fs.readFileSync(`${cwd}/vintage-frontend.json`, 'utf8'));
 
     // copy new files
     fsExtra
@@ -151,22 +154,19 @@ function copyNewFiles() {
 
       // webpack.config.js
       .then(() =>
-        fsExtra.copy(`${cwd}/${pathToVCLITemplates}/webpack.config.js`, `${cwd}/webpack.config.js`)
-      )
-
-      // vintage-frontend.json
-      .then(() =>
-        fsExtra.copy(`${cwd}/${pathToTemplates}/vintage-frontend.json`, `${cwd}/vintage-frontend.json`)
+        fsExtra.copy(`${cwd}/${pathToTemplates}/webpack.config.js`, `${cwd}/webpack.config.js`)
       )
 
       // package.json new devDependencies, scripts and version
       .then(() => {
-        const newPackage = fsExtra.readJsonSync(`${cwd}/${pathToVCLITemplates}/package.json`);
+        const oldPackageName = `package.${settings.scriptsLanguage}${settings.hasJquery ? '.jquery' : ''}.json`;
+        const newPackage = fsExtra.readJsonSync(`${cwd}/${pathToVCLITemplates}/${oldPackageName}`);
         const oldPackage = fsExtra.readJsonSync(`${cwd}/package.json`);
 
         oldPackage.version = newPackage.version;
         oldPackage.scripts = newPackage.scripts;
         oldPackage.devDependencies = Object.assign({}, oldPackage.devDependencies, newPackage.devDependencies);
+        oldPackage.dependencies = Object.assign({}, oldPackage.dependencies, newPackage.dependencies);
 
         fsExtra.writeJsonSync(`${cwd}/package.json`, oldPackage);
 
